@@ -36,53 +36,8 @@
 <![endif]-->
     <a href="index-1.html#top" class="back-to-top" id="backto-top"><i class="fal fa-arrow-up"></i></a>
     <header class="header axil-header header-style-1">
-        <div class="header-top-campaign">
-            <div class="container position-relative">
-                <div class="campaign-content">
-                    <p>Open Doors To A World Of Fashion <a href="index-1.html#">Discover More</a></p>
-                </div>
-            </div>
-            <button class="remove-campaign"><i class="fal fa-times"></i></button>
-        </div>
-        <div class="axil-header-top">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-sm-6">
-                        <div class="header-top-dropdown">
-                            <div class="dropdown">
-                                <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    English
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="index-1.html#">English</a></li>
-                                    <li><a class="dropdown-item" href="index-1.html#">Arabic</a></li>
-                                    <li><a class="dropdown-item" href="index-1.html#">Spanish</a></li>
-                                </ul>
-                            </div>
-                            <div class="dropdown">
-                                <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    USD
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="index-1.html#">USD</a></li>
-                                    <li><a class="dropdown-item" href="index-1.html#">AUD</a></li>
-                                    <li><a class="dropdown-item" href="index-1.html#">EUR</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="header-top-link">
-                            <ul class="quick-link">
-                                <li><a href="index-1.html#">Help</a></li>
-                                <li><a href="sign-up.html">Join Us</a></li>
-                                <li><a href="sign-in.html">Sign In</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+       
+      
         <!-- Start Mainmenu Area  -->
         <div id="axil-sticky-placeholder"></div>
         <div class="axil-mainmenu">
