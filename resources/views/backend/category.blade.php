@@ -104,7 +104,7 @@
                         </thead>
 
                         <tbody>
-                          @foreach ($categories as $key => $category )
+                          @foreach ($parentcategories as $key => $category )
                               <tr>
                                 <td>{{$categories->firstitem()+$key}}</td>
                                 <td>{{$category->title}}</td>
@@ -114,6 +114,27 @@
                                 <a class="" href="{{route('category.delete',$category->id)}}"> <i class="lni lni-trash-can"></i></a>
                                 </td>
                               </tr>
+                              <!--sub-category-->
+
+                              @if ($category->subcategories)
+
+                              @foreach ($category->subcategories as $subcategory)
+                                
+                              
+                              <tr>
+                                <td>--</td>
+                                <td>{{$subcategory->title}}</td>
+                                <td>{{$subcategory->title_slug}}</td>
+                                <td>
+                                  <a class="" href="{{route('category.edit',$subcategory->id)}}"> <i class="lni lni-pencil"></i></a>
+                                  <a class="" href="{{route('category.delete',$subcategory->id)}}"> <i class="lni lni-trash-can"></i></a>
+                                  </td>
+                                
+                              </tr>
+                              @endforeach
+                              @endif
+                              
+
                           
                           
                           @endforeach

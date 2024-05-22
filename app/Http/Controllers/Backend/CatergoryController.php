@@ -16,8 +16,9 @@ class CatergoryController extends Controller
 
     function category()
     {
-        $categories = Category::with('subcategories')->Where('category_id',null)->Latest()->paginate(8); //all dile shob chole ashe asc order e  Category::all()
-        return view('backend.category',compact('categories'));
+        $categories = Category::with('subcategories')->Latest()->paginate(8); //all dile shob chole ashe asc order e  Category::all()   //Category::Latest()->get()
+        $parentcategories = Category::where('category_id',null)->with('subcategories')->Latest()->paginate(8);
+        return view('backend.category',compact('categories','parentcategories'));
     }
     function categoryadd(Request $req,$id=null)
     {
@@ -38,9 +39,11 @@ class CatergoryController extends Controller
     }
     function categoryedit($id)
     {
-        $categories = Category::with('subcategories')->Where('category_id',null)->Latest()->paginate(8); //all dile shob chole ashe asc order e  Category::all()   //Category::Latest()->get()
+       
+        $categories = Category::with('subcategories')->Latest()->paginate(8); //all dile shob chole ashe asc order e  Category::all()   //Category::Latest()->get()
+        $parentcategories = Category::where('category_id',null)->with('subcategories')->Latest()->paginate(8);
         $foundcategory=Category::find($id);
-        return view('backend.category',compact('foundcategory','categories'));
+        return view('backend.category',compact('foundcategory','categories','parentcategories'));
         
     }
 }
