@@ -50,7 +50,24 @@
                     <div class="input-style-1">
                       <input value="{{$foundcategory->title ?? ''}}" name='title' type="text" placeholder="Category Title">
                     </div>
-                    <!-- end input -->
+                    <!--select section-->
+                 
+               
+                      <div class="select-style-1">
+                        <label>Sub-Category</label>
+                        <div class="select-position">
+                          <select name="parent_id" id="parent_id">
+                            <option disabled selected>Select Sub-Category</option>
+                            @foreach ($categories as $category)
+                            <option value="{{$category->id}}">{{$category->title}}</option>
+                            @endforeach
+                            
+                            
+                          </select>
+                        </div>
+                      </div>
+                
+                    <!--select ends-->
                     <div class="mx-auto" style="width:fit-content">
                       <button type="submit"class="main-btn primary-btn rounded-full btn-hover">
                         {{Request::routeIs('category.show')? 'Add Category':'Save Changes'}}

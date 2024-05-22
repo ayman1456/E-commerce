@@ -11,8 +11,11 @@ Route::get('/', [HomepageController::class, 'homepage'])->name('homepage');
 
 Auth::routes();
 
+
+Route::middleware('auth')->group(function () {
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
-Route::get('/dashboard/category',[CatergoryController::class, 'category'])->name('category.show');
-Route::post('/dashboard/category/{id?}',[CatergoryController::class, 'categoryadd'])->name('category.add');
-Route::get('/dashboard/category/delete/{id}',[CatergoryController::class, 'categorydelete'])->name('category.delete');
-Route::get('/dashboard/category/edit/{id}',[CatergoryController::class, 'categoryedit'])->name('category.edit');
+Route::get('/category',[CatergoryController::class, 'category'])->name('category.show');
+Route::post('/category/{id?}',[CatergoryController::class, 'categoryadd'])->name('category.add');
+Route::get('/category/delete/{id}',[CatergoryController::class, 'categorydelete'])->name('category.delete');
+Route::get('/category/edit/{id}',[CatergoryController::class, 'categoryedit'])->name('category.edit');
+});

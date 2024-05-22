@@ -16,7 +16,7 @@ class CatergoryController extends Controller
 
     function category()
     {
-        $categories = Category::Latest()->paginate(8); //all dile shob chole ashe asc order e  Category::all()
+        $categories = Category::with('subcategories')->Where('category_id',null)->Latest()->paginate(8); //all dile shob chole ashe asc order e  Category::all()
         return view('backend.category',compact('categories'));
     }
     function categoryadd(Request $req,$id=null)
@@ -24,9 +24,10 @@ class CatergoryController extends Controller
        $slug= $this->createSlug(Category::class,$req->title);
         $category = Category::findOrNew($id);
         $category->title=$req->title;
+        $category->category_id=$req->parent_id;
         $category->title_slug=$slug;
         $category->save();
-        return redirect('/dashboard/category');
+        return redirect('/category');
 
     }
     function categorydelete($id)
@@ -37,7 +38,7 @@ class CatergoryController extends Controller
     }
     function categoryedit($id)
     {
-        $categories = Category::Latest()->paginate(8); //all dile shob chole ashe asc order e  Category::all()   //Category::Latest()->get()
+        $categories = Category::with('subcategories')->Where('category_id',null)->Latest()->paginate(8); //all dile shob chole ashe asc order e  Category::all()   //Category::Latest()->get()
         $foundcategory=Category::find($id);
         return view('backend.category',compact('foundcategory','categories'));
         
