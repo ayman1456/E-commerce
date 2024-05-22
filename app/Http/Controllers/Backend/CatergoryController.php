@@ -22,6 +22,9 @@ class CatergoryController extends Controller
     }
     function categoryadd(Request $req,$id=null)
     {
+        $req->validate([
+            'cat_icon' => "mimes:png,jpg"
+        ]);
        $slug= $this->createSlug(Category::class,$req->title);
         $category = Category::findOrNew($id);
         $category->title=$req->title;

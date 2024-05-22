@@ -44,7 +44,7 @@
         <div class="row">
             <div class="col-lg-4">
                 <div class="card-style mb-30">
-                    <form method="POST" action="{{route('category.add',$foundcategory->id??"")}}">
+                    <form method="POST" action="{{route('category.add',$foundcategory->id??"")}}" enctype="multipart/form-data">
                         @csrf
                     <h6 class="mb-25">{{Request::routeIs('category.show')? 'Add Category':'Edit Category'}}</h6>
                     <div class="input-style-1">
@@ -68,6 +68,12 @@
                       </div>
                 
                     <!--select ends-->
+
+                      <input type="file" class="form-control mb-3" name="cat_icon"></input>
+                      @error('cat_icon')
+                        <div class="text-danger">{{$message}}</div>
+                      @enderror
+
                     <div class="mx-auto" style="width:fit-content">
                       <button type="submit"class="main-btn primary-btn rounded-full btn-hover">
                         {{Request::routeIs('category.show')? 'Add Category':'Save Changes'}}
@@ -131,6 +137,9 @@
                                   </td>
                                 
                               </tr>
+
+                              @include('layouts.components.CategoryComponent')
+
                               @endforeach
                               @endif
                               
