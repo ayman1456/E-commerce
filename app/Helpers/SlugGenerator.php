@@ -5,7 +5,7 @@ namespace App\Helpers;
 
 trait SlugGenerator{
     function createSlug($class,$title){
-        $slugcount = $class::where('title',str()->slug($title))->count();
+        $slugcount = $class::where('title_slug',str()->slug($title))->count();
         $slug=str()->slug($title);
         
         if($slugcount>0){
