@@ -59,7 +59,9 @@
                           <select name="parent_id" id="parent_id">
                             <option disabled selected>Select Sub-Category</option>
                             @foreach ($categories as $category)
-                            <option value="{{$category->id}}">{{$category->title}}</option>
+                            @if($category->id!=$foundcategory->id)
+                            <option {{  isset($foundcategory) ?( $category->id==$foundcategory->category_id ? "selected":""):null}} value="{{$category->id}}">{{$category->title}}</option>
+                            @endif
                             @endforeach
                             
                             
@@ -152,7 +154,7 @@
                         </tbody>
                       </table>
                       <!-- end table -->
-                      <div class=" mx-auto mt-5" style="width:fit-content">{{$categories->links()}}</div>
+                 {{$categories->links()}}
                       
                     </div>
                   </div>

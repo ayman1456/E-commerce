@@ -18,12 +18,15 @@ class CatergoryController extends Controller
 
     function category()
     {
-        $categories = Category::with('subcategories')->Latest()->paginate(8); //all dile shob chole ashe asc order e  Category::all()   //Category::Latest()->get()
+        $foundcategory=null;
+        $categories = Category::with('subcategories')->Latest()->get(); //all dile shob chole ashe asc order e  Category::all()   //Category::Latest()->get()
         $parentcategories = Category::where('category_id',null)->with('subcategories')->Latest()->paginate(8);
-        return view('backend.category',compact('categories','parentcategories'));
+        // dd($categories);
+        return view('backend.category',compact('categories','parentcategories','foundcategory'));
     }
     function categoryadd(Request $req,$id=null,$iconpath=null)
     {
+
         $req->validate([
             'cat_icon' => "mimes:png,jpg"
         ]);
@@ -31,7 +34,6 @@ class CatergoryController extends Controller
     
        $slug= $this->createSlug(Category::class,$req->title);
        $iconpath = $this->uploadSimgleMedia($req->cat_icon,$slug,'category');
-
         $category = Category::findOrNew($id);
         $category->title=$req->title;
         $category->category_id=$req->parent_id;

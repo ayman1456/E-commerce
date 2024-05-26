@@ -8,8 +8,8 @@ trait MediaUploader{
         if($file)
         {
             $filename= $filename.'.'.$file->getClientOriginalExtension();
-        $mediapath=$file->storeAs($dirname,$filename,$accessibilty);
-        return $mediapath;
+            $mediapath=$file->storeAs($dirname,$filename,$accessibilty);
+            return $mediapath;
         }
         
     }
