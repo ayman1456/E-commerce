@@ -99,6 +99,9 @@
                               <h6>#</h6>
                             </th>
                             <th>
+                              <h6>Icon</h6>
+                            </th>
+                            <th>
                               <h6>Name</h6>
                             </th>
                             <th>
@@ -115,6 +118,14 @@
                           @foreach ($parentcategories as $key => $category )
                               <tr>
                                 <td>{{$categories->firstitem()+$key}}</td>
+                                <td><img src="<?php
+                                  if($category->cat_icon==null)
+                                  {
+                                    echo(env('APP_URL').'/storage/nullimage.png'); 
+                                  }
+                                  else{
+                                    echo(env('APP_URL').'/storage/'.$category->cat_icon);
+                                  } ?>" style="width: 100px" alt="{{$category->title}}"></td>
                                 <td>{{$category->title}}</td>
                                 <td>{{$category->title_slug}}</td>
                                 <td>
@@ -131,7 +142,9 @@
                               
                               <tr>
                                 <td>--</td>
+                                <td><img src="{{asset('storage/'.$subcategory->cat_icon)}}" style="width: 100px"></td>
                                 <td>{{$subcategory->title}}</td>
+                                
                                 <td>{{$subcategory->title_slug}}</td>
                                 <td>
                                   <a class="" href="{{route('category.edit',$subcategory->id)}}"> <i class="lni lni-pencil"></i></a>
