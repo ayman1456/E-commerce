@@ -11,4 +11,5 @@ class HomepageController extends Controller
     function homepage(){
         return view ('frontend.homepage');
     }
+   
 }

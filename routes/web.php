@@ -19,3 +19,4 @@ Route::post('/category/{id?}',[CatergoryController::class, 'categoryadd'])->name
 Route::get('/category/delete/{id}',[CatergoryController::class, 'categorydelete'])->name('category.delete');
 Route::get('/category/edit/{id}',[CatergoryController::class, 'categoryedit'])->name('category.edit');
 });
+
