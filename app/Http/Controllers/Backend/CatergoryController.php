@@ -19,7 +19,7 @@ class CatergoryController extends Controller
     function category()
     {
         $foundcategory=null;
-        $categories = Category::with('subcategories')->Latest()->get(); //all dile shob chole ashe asc order e  Category::all()   //Category::Latest()->get()
+        $categories = Category::with('subcategories')->Latest()->paginate(); //all dile shob chole ashe asc order e  Category::all()   //Category::Latest()->get()
         $parentcategories = Category::where('category_id',null)->with('subcategories')->Latest()->paginate(8);
         // dd($categories);
         return view('backend.category',compact('categories','parentcategories','foundcategory'));

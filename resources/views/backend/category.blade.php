@@ -59,7 +59,7 @@
                           <select name="parent_id" id="parent_id">
                             <option disabled selected>Select Sub-Category</option>
                             @foreach ($categories as $category)
-                            @if($category->id!=$foundcategory->id)
+                            @if($category->id!=(isset($foundcategory->id) ? $foundcategory->id : 0))
                             <option {{  isset($foundcategory) ?( $category->id==$foundcategory->category_id ? "selected":""):null}} value="{{$category->id}}">{{$category->title}}</option>
                             @endif
                             @endforeach
