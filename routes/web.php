@@ -4,6 +4,7 @@ use App\Http\Controllers\Backend\CatergoryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Frontend\HomepageController;
 
 
@@ -14,9 +15,20 @@ Auth::routes();
 
 Route::middleware('auth')->group(function () {
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+
+//Category Routes
 Route::get('/category',[CatergoryController::class, 'category'])->name('category.show');
 Route::post('/category/{id?}',[CatergoryController::class, 'categoryadd'])->name('category.add');
 Route::get('/category/delete/{id}',[CatergoryController::class, 'categorydelete'])->name('category.delete');
 Route::get('/category/edit/{id}',[CatergoryController::class, 'categoryedit'])->name('category.edit');
+
+
+//product routes
+Route::prefix('/products')->controller(ProductController::class)->name('products.')->group(function(){
+    
+    Route::get('/','addproduct')->name('add');
+});
+
+
 });
 
